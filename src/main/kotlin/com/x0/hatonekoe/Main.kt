@@ -12,3 +12,15 @@ fun moveDisc(discNumber: Int, fromPole: Char, workingPole: Char, toPole: Char) {
         moveDisc(discNumber - 1, workingPole, fromPole, toPole)
     }
 }
+
+/** ハノイの塔の最短手数を返す */
+fun moveDiscWithCount(discNumber: Int, count: Int = 0): Int {
+    var counter = count
+
+    if (discNumber > 0) {
+        ++counter
+        counter = moveDiscWithCount(discNumber - 1, counter)
+        counter = moveDiscWithCount(discNumber - 1, counter)
+    }
+    return counter
+}
